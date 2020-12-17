@@ -11,7 +11,6 @@
     "react-wordcloud": "^1.1.1"
   },
   "devDependencies": {
-    "code-surfer": "^3.1.1",
-    "website-pdf": "^4.1.0"
+    "code-surfer": "^3.1.1"
   }
 }
