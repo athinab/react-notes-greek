@@ -3,367 +3,500 @@ import { Head, Notes } from 'mdx-deck'
 import myTheme from './lib/theme'
 export const theme = myTheme
 
-import CustomSplit from './lib/split.layout.js'
-import ImageSplit from './lib/imageSplit.layout.js'
-import Central from './lib/central.layout.js'
 
-import Quote from './components/quote'
-import BackgroundImage from './components/background-image'
-import Legend from './components/legend'
-import Center from './components/center'
-import Counter from './components/counter'
 import LargeImage from './components/largeImage'
-import Impact from './components/impact'
 import Credit from './components/credit'
 import SlideHeadline from './components/slide-headline'
-import Portrait from './components/portrait'
 import OpeningSlide from './components/opening-slide'
-import Interlude from './components/interlude'
 import BackgroundBubbles from './components/background-bubbles'
-import TableCaption from './components/table-caption'
-import Wordcloud from './components/wordcloud'
-import ModeImage from './components/mode-image'
-import PrimaryColored from './components/primary-colored'
 import Website from './components/website/Website'
-import MfWebsite from './components/website/Mf-Website'
-import BetterMfWebsite from './components/website/Better-Mf-Website'
-import Boids from './components/boids/Boids'
-import ClosingSlide from './components/closing-slide'
 
+import {SplitContainer, Part} from './lib/split.layout.js'
+import { CodeSurferColumns, Step } from 'code-surfer'
+import CodeSlide from './components/code-slide.js'
 
-import imgPotential from './img/potential.jpg'
-import imgHTML from './img/html.png'
-import imgCSS from './img/css.png'
-import imgJS from './img/js.png'
-import imgInternet from './img/internet.png'
-import imgRequest from './img/request.png'
-import imgNode from './img/node-logo.svg'
-import imgCreative from './img/creative.jpg'
-import imgPortrait from './img/portrait.jpg'
-import imgStateFrameworks from './img/state-js-19-frameworks.png'
-import imgPWA from './img/pwa.png'
+import downloadsImg from './img/downloads.png'
+import usageImg from './img/js-frameworks-use.png'
+import reduxDirImg from './img/redux-dir-structure.png'
+import nextjsDirImg from './img/nextjs-dir-structure.png'
+import input1Img from './img/input1.png'
+import input2Img from './img/input2.png'
+import input3Img from './img/input3.png'
+import input4Img from './img/input4.png'
 
 <Head>
-  <title>Webdevs history</title>
+  <title>React και BDR</title>
 </Head>
 
 <OpeningSlide
-  title="A short history of webdevs future 🔮"
-  subtitle="An introduction and reminder."
-  author='Hendrik Wallbaum'
+  title="Εισαγωγικές πληροφορίες για το React"
 />
 
 <BackgroundBubbles />
 
 ---
 
-<SlideHeadline sectionTitle='This talk'><span style="line-height: 1em;">Speaker</span></SlideHeadline>
+<SlideHeadline sectionTitle='Τάσεις'>Downloads</SlideHeadline>
 
-<CustomSplit>
 
-<Center>
+<Website resetStyles={true} title=' 🖥  NPM trends'>
 
-<Portrait src={imgPortrait} />
-
-</Center>
-
-## <PrimaryColored>Hendrik</PrimaryColored>
-
-JS Enthusiast 🤓
-
-Developer for fun 🥳
-
-Consultant from <a href="https://netlight.com" target="_blank">Netlight</a>
-
-</CustomSplit>
-
----
-
-<OpeningSlide
-  title={
-    <span style="text-align: center; display: block;">
-      Past → <PrimaryColored>Present</PrimaryColored> → Future
-    </span>
-  }
-/>
-
-<Notes>
-
-- Teaching ES generations
-- Building bridges
-- Reflecting my work
-
-</Notes>
-
----
-
-<SlideHeadline sectionTitle='Websites'>Simple documents</SlideHeadline>
-
-<Website resetStyles={true} title='Basic website 🖥'>
-
-  <MfWebsite />
-
-</Website>
-
-<Notes>
-
-- Fast forwarding to HTML.
-- 1969 First connected computers (Universities in US)
-- HTML around 90s.
-
-</Notes>
-
----
-
-<SlideHeadline sectionTitle='Websites'>Gained styling</SlideHeadline>
-
-<Website resetStyles={true} title='With style 😎'>
-
-  <BetterMfWebsite />
+<LargeImage src={downloadsImg} noShadow />
+<Credit credit="React vs Vue vs Angular vs jQuery"
+creditLink="https://www.npmtrends.com/react-vs-vue-vs-angular-vs-jquery" />
 
 </Website>
 
 ---
 
-<Central>
+<SlideHeadline sectionTitle='Τάσεις'>Γνώμες</SlideHeadline>
 
-<BackgroundImage src={imgPotential} blur />
+<Website resetStyles={true} title=' 🖥  Opinions 2019'>
 
-<Quote credit='David Bowie (1999)'>
+<LargeImage src={usageImg} noShadow />
+<Credit credit="State of JS 2019" creditLink="https://2019.stateofjs.com/front-end-frameworks/" />
 
-I don't think we've even seen the tip of the iceberg. I think the potential of what the Internet is going to do to society both good and bad is unimaginable. I think we're on the cusp of something exhilarating and terrifying.
-
-</Quote>
-
-</Central>
+</Website>
 
 ---
 
-<SlideHeadline sectionTitle='Websites'>Technologies</SlideHeadline>
+<SlideHeadline separateLine sectionTitle='Γιατί δεν είναι framework;'>View library</SlideHeadline>
 
-<ImageSplit src={imgHTML}>
+Το React είναι library και όχι framework.
 
-### HTML
-- The rock hard content
-- Semantic information about what is displayed
-
-</ImageSplit>
+Είναι το View κομμάτι από την αρχιτεκτονική MVC. Δηλ. εμπλέκεται μόνο με το
+κομμάτι των στοιχείων που εμφανίζονται στο χρήστη. Με άλλα λόγια, με ό,τι
+σχετίζεται με τα components.
 
 ---
 
-<SlideHeadline sectionTitle='Websites'>Technologies</SlideHeadline>
+<SlideHeadline separateLine sectionTitle='Γιατί δεν είναι framework;'>Αποθήκευση δεδομένων</SlideHeadline>
 
-<ImageSplit src={imgCSS}>
+Είναι επιλογή του προγραμματιστή το πώς θα αποθηκεύει το state της εφαρμογής.
 
-### CSS
-- The look and feel
-- Multiple posibilities for same content ([cssZenGarden](http://www.csszengarden.com/))
+<SplitContainer>
 
-</ImageSplit>
+<Part percentageWidth='50%'>
 
-<Notes>
+Πιθανές λύσεις:
+- [React Context](https://reactjs.org/docs/context.html)
+- [Redux](https://redux.js.org/tutorials/essentials/part-1-overview-concepts)
+- and more...
 
-- Cascading StyleSheets.
-- New ones overwrite previous rules - cascading.
+</Part>
 
-</Notes>
+<Part percentageWidth='50%'>
 
----
+Just React or Redux?
 
-<SlideHeadline sectionTitle='Websites'>Technologies</SlideHeadline>
+- [Stack Overflow](https://stackoverflow.com/questions/49568073/react-context-vs-react-redux-when-should-i-use-each-one)
+- [Post του D.
+  Abramov](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)
+- [Post του M.
+  Erikson](https://blog.isquaredsoftware.com/2018/03/redux-not-dead-yet/)
 
-<ImageSplit src={imgJS}>
+</Part>
 
-### JavaScript
-
-- The interaction.
-- Do something when the user interacts with the page.
-- Famously developed in 10 days.
-- Today standardised as ECMAScript (ES).
-
-</ImageSplit>
+</SplitContainer>
 
 ---
 
-<SlideHeadline sectionTitle='The Internet'>"Slightly" simplified</SlideHeadline>
+<SlideHeadline separateLine sectionTitle='Γιατί δεν είναι framework;'>Οργάνωση
+αρχείων</SlideHeadline>
 
-<Center>
+Ο προγραμματιστής επιλέγει την οργάνωση των αρχείων του project.
 
-<img src={imgInternet} />
-
-</Center>
-
----
-
-<SlideHeadline sectionTitle='Web requests'>Masively simplified</SlideHeadline>
-
-<Center>
-
-<img src={imgRequest} style="margin-top: 10vh;" />
-
-</Center>
-
-<Notes>
-
-- Enable fast user feedback.
-- Reduce load on server.
-- AJAX
-
-</Notes>
+Το ίδιο το React προτείνει ομαδοποίηση των αρχείων με βάση το είδος του αρχείου,
+τα features ή τα routes.  [Πηγή](https://reactjs.org/docs/faq-structure.html)
 
 ---
 
-<SlideHeadline sectionTitle='WebDev'>The rise of JavaScript</SlideHeadline>
+<SlideHeadline separateLine sectionTitle='Γιατί δεν είναι framework;'>Οργάνωση
+αρχείων</SlideHeadline>
 
-- Browsers have mixed support for features. ([CanIUse.com](https://caniuse.com/))
-- jQuery was the first to conquer this.
-- Enabled writing larger programs.
+<SplitContainer style={{
+  display: 'flex',
+  justifyContent: 'space-between',
+  marginTop:30,
+}}>
 
-<Boids />
+<Part percentageWidth="45%">
 
-<Notes>
 
-- jQuery: 2006
-- To this day many answers on StackOverflow asume you are using jQuery.
+NextJS
 
-</Notes>
+<img src={nextjsDirImg} style={{width: '100%'}}/>
 
----
 
-<SlideHeadline sectionTitle='WebDev'>NodeJS</SlideHeadline>
+</Part>
 
-<Center>
+<Part percentageWidth="45%">
 
-<img src={imgNode} style="margin-top: 10vh;"/>
+Redux
 
-</Center>
+<img src={reduxDirImg}  style={{width: '100%'}} />
 
-<Notes>
 
-- Introduced 2009
-- Enabled an echosystem to evolve around WebDev.
+</Part>
 
-</Notes>
+</SplitContainer>
 
 ---
 
-<SlideHeadline sectionTitle='WebDev'>Make it one</SlideHeadline>
+<SlideHeadline separateLine sectionTitle='Γιατί δεν είναι framework;'>Routing</SlideHeadline>
 
-- Large apps became difficult to handle.
-- Package management rose (npm).
-- Bundling was introduced.
+Ο προγραμματιστής επιλέγει πώς θα υλοποιήσει το routing της εφαρμογής.
 
-<Boids/>
+Δημοφιλείς βιβλιοθήκες για routing:
 
-<Notes>
-
-- 2010 npm (pkg manager)
-- 2012 Bower (pkg for browser)
-- 2012 Grunt (task runner)
-
-</Notes>
+- [NextJS](https://nextjs.org/): file system routing
+- [React Router](https://reactrouter.com/web/guides/quick-start)
 
 ---
 
-<BackgroundImage blur src={imgCreative} />
+<SlideHeadline separateLine sectionTitle='Γιατί δεν είναι framework;'>Static
+type checking</SlideHeadline>
 
-<OpeningSlide title="Creative years" />
+Ο προγραμματιστής αν και ποιο μηχανισμό θα χρησιμοποιήσει για type checking.
 
-<Notes>
-
-- Hip framework of the month.
-- A lot of trying things out.
-- CSS pre-processing.
-
-</Notes>
+- [Typescript](https://www.typescriptlang.org/)
+- [Flow](https://flow.org/)
+- [PropTypes](https://github.com/facebook/prop-types)
+- Τίποτα
 
 ---
 
-<SlideHeadline sectionTitle='WebDev'>Need to know</SlideHeadline>
+<SlideHeadline separateLine sectionTitle='React ecosystem'>Τι είναι;</SlideHeadline>
 
-- HTML
-- CSS
-- JavaScript
-- CSS-Pre-processor
-- Package management
-- Bundler
-- Unidirectional Dataflow
-- Frameworks
-- (Type System)
-
-<Boids />
+Επειδή το React **δεν είναι opinionated** και δεν περιλαμβάνει στον κώδικα του
+επιλογές για όσα αναφέρονται, έχει δημιουργηθεί ένα οικοσύστημα που περιλαμβάνει
+έναν **μεγάλο αριθμό βιβλιοθηκών** που δουλεύουν με React projects και συντηρούνται
+από διαφορετικούς προγραμματιστές.
 
 ---
 
-<SlideHeadline sectionTitle='WebDev'>Becoming boring</SlideHeadline>
+<SlideHeadline separateLine sectionTitle='React ecosystem'>Πώς μοιάζει το
+αποτέλεσμα;</SlideHeadline>
 
-- Big frameworks
-- ES modules
-- Webpack
-- Babel
-- SASS
+Όπως εμείς θέλουμε!
 
-<Boids />
-
-<Notes>
-
-- JS is constantly evolving but backwards transpilable.
-- New CSS features.
-- Base technologies stayed the same.
-
-</Notes>
+Αυτό που βλέπει ο χρήστης και το style των components μπορεί να βασίζεται σε
+δικό μας design ή στο design κάποιας από τις πολυάριθμες βιβλιοθήκες που
+προσφέρουν components.
 
 ---
 
-<SlideHeadline sectionTitle='WebDev'>Big players</SlideHeadline>
+<SlideHeadline separateLine sectionTitle='React ecosystem'>Ενδεικτικές
+βιβλιοθήκες components</SlideHeadline>
 
-<LargeImage src={imgStateFrameworks} noShadow />
-
-<Credit credit="State of JavaScript 2019" creditLink="https://2019.stateofjs.com/overview/" />
-
-<Notes>
-
-- React: The functional JavaScript rendering library
-- Angular: Good for Java Devs Framework with awesome docs
-
-</Notes>
+[Material-UI](https://material-ui.com/), [React
+Bootstrap](https://react-bootstrap.github.io/), [React Semantic
+UI](https://react.semantic-ui.com/elements/divider/),
+[Rebass](https://rebassjs.org/), κλπ...
 
 ---
 
-<SlideHeadline sectionTitle='Future'><span style="line-height: 1em;">🔮</span></SlideHeadline>
+<SlideHeadline separateLine sectionTitle='React ecosystem'>Παράδειγμα Inputs</SlideHeadline>
 
-- Progressive Web Apps (PWA)
-- WebComponents
-- Hybrid Apps
-- CSS in JS
+Μπορεί ένα input να μοιάζει όπως θέλουμε:
 
-<Boids />
+<div style={{ width: '100%', display: 'flex', justifyContent: 'space-between',
+flexWrap: 'wrap'}}>
+<div style={{width: 300}}>
+<img src={input1Img} style={{ width: '100%', margin: 6}}/>
+</div>
+<div style={{width: 600}}>
+<img src={input4Img} style={{ width: '100%', margin: 6}}/>
+<div style={{width: 300}}>
+<img src={input2Img} style={{ width: '100%', margin: 6}}/>
+</div>
+<div style={{width: 300}}>
+<img src={input3Img} style={{ width: '100%', margin: 6}}/>
+</div>
+</div>
 
-<Notes>
-
-- All of these have been coming for years.
-- In order of looking nice on a slide.
-
-</Notes>
-
----
-
-<SlideHeadline sectionTitle='This talk'>Summary</SlideHeadline>
-
-- Base technologies are not build for what we do.
-- Amazing tooling supports modern webdevs.
-- Things are now changing slowly.
-- The future is exciting.
-- Webdev is fun.
-
-<Boids />
+</div>
 
 ---
 
-<ClosingSlide
-  title="A short history of webdevs future 🔮"
-  author='Hendrik Wallbaum'
-  repoLink="https://github.com/HoverBaum/talk-webdev-history-and-future"
-/>
+<SlideHeadline separateLine sectionTitle='Σημαντικά για κατανόηση'></SlideHeadline>
 
-<Boids left />
+- [Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [Components' lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+- [Thinking in React](https://reactjs.org/docs/thinking-in-react.html)
+
+---
+
+<SlideHeadline separateLine sectionTitle='Παραδείγματα με κώδικα'>Class
+component BdrLink</SlideHeadline>
+
+---
+
+<CodeSlide>
+<CodeSurferColumns>
+
+<Step>
+
+```jsx showNumbers file=./code_examples/BdrLink1.js
+```
+</Step>
+
+<Step>
+
+```jsx showNumbers 6,8,15,34 file=./code_examples/BdrLink1.1.js
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 13,21 file=./code_examples/BdrLink1.1.js
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 16,20,30:32 file=./code_examples/BdrLink1.1.js
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 1,7:11,13,20 file=./code_examples/BdrLink2.js
+```
+
+</Step>
+
+</CodeSurferColumns>
+</CodeSlide>
+
+---
+
+<SlideHeadline separateLine sectionTitle='Παραδείγματα με κώδικα'>D. Abramov:
+Hooks</SlideHeadline>
+
+Ο κώδικας που ακολουθεί είναι το πρώτο μέρος από την παρουσίαση των hooks.
+
+Πλήρης παρουσίαση: [ReactConf 2018](https://www.youtube.com/watch?v=dpw9EHDh2bM&feature=youtu.be&t=1051&ab_channel=ReactConf)
+
+---
+
+<CodeSurferColumns>
+
+<Step>
+
+```jsx showNumbers file=./code_examples/greeting.class.1.3.js title="Before Hooks" subtitle="A class component with state"
+```
+
+```jsx showNumbers file=./code_examples/greeting.hooks.1.4.js title="After Hooks" subtitle="A function component with state"
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 4,5,15,19 file=./code_examples/greeting.class.1.3.js title="Before Hooks" subtitle="A class component with state"
+```
+
+```jsx showNumbers 4,7,11 file=./code_examples/greeting.hooks.1.4.js title="After Hooks" subtitle="A function component with state"
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 5,7:9,13 file=./code_examples/greeting.class.1.3.js title="Before Hooks" subtitle="state has to be an object"
+```
+
+```jsx showNumbers 5 file=./code_examples/greeting.hooks.1.4.js title="After Hooks" subtitle="state could be anything"
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 7:12,16,24 file=./code_examples/greeting.class.1.3.js title="Before Hooks" subtitle="we read and update the state using this.state and this.setState"
+```
+
+```jsx showNumbers 5,8,14[16:27] file=./code_examples/greeting.hooks.1.4.js title="After Hooks" subtitle="the state and the setter are just variables in the function"
+```
+
+</Step>
+
+<Step subtitle="What is useState exactly? useState is a hook, a function provided by React that lets you hook into React features from your function components">
+
+```jsx showNumbers 1[100],31[100] file=./code_examples/greeting.class.1.3.js title="Before Hooks"
+```
+
+```jsx showNumbers 1[1:7,15:40],5 file=./code_examples/greeting.hooks.1.4.js title="After Hooks"
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<SlideHeadline sectionTitle='Redux στο BDR'>Καλύψεις</SlideHeadline>
+
+Για να δημιουργήσουμε την οθόνη με τις καλύψεις χρειαστήκαμε:
+
+<SplitContainer>
+
+<Part percentageWidth='50%'>
+
+- Κάποια components
+- Κάποια άλλα containers
+- Actions
+
+</Part>
+
+<Part percentageWidth='50%'>
+
+- Σύνδεση με το store μέσω Redux
+- i18n
+- Style
+
+</Part>
+
+</SplitContainer>
+
+---
+
+<CodeSurferColumns>
+
+<Step>
+
+```jsx showNumbers file=./code_examples/Coverages_container.1.1.js
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 2,5,7,11,15,41 file=./code_examples/Coverages_container.1.1.js
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 21:35 file=./code_examples/Coverages_container.1.1.js
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 7:11,23:34 file=./code_examples/Coverages_container.1.2.js
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 8,26 file=./code_examples/Coverages_container.1.2.js
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 10,31 file=./code_examples/Coverages_container.1.2.js
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns>
+
+<Step>
+
+```jsx showNumbers 10:58 file=./code_examples/actions_common.1.1.js
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 21:23 file=./code_examples/actions_common.1.1.js
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 3:8 file=./code_examples/actions_common.1.1.js
+```
+
+</Step>
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns>
+
+<Step>
+
+```jsx showNumbers 28:56 file=./code_examples/coverages_reducer.1.1.js
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers 10:20,28 file=./code_examples/coverages_reducer.1.1.js
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns>
+
+<Step>
+
+```jsx showNumbers 19,21,23 file=./code_examples/combine_reducers.1.1.js
+```
+
+```jsx showNumbers 24:26 file=./code_examples/Coverages_container.1.2.js
+```
+
+</Step>
+
+<Step>
+
+```jsx showNumbers file=./code_examples/combine_reducers.1.1.js
+```
+
+```jsx showNumbers 8,23:27 file=./code_examples/Coverages_container.1.2.js
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<SlideHeadline sectionTitle='Προτάσεις'>Από που ξεκινάω;</SlideHeadline>
+
+- Οδηγός από τα docs: [https://reactjs.org/docs/getting-started.html](https://reactjs.org/docs/getting-started.html)
+- Δοκιμάζω να φτιάξω κάτι με create-react-app: [https://create-react-app.dev/docs/getting-started/](https://create-react-app.dev/docs/getting-started/)
+- Style: https://material-ui.com/
+- Blog posts, tutorials, videos...
+
+---
+
+<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center',
+alignText: 'center', flex: 1, width: '100%'}}>
+
+# The End!
+
+</div>
