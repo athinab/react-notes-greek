@@ -49,23 +49,19 @@ const OpeningSlide = ({ title, author, subtitle, title2 }) => {
           </h4>
         )}
         {author && (
-          <a
-            href="https://hendrikwallbaum.de"
-            target="_blank"
-            css={{ textDecoration: 'none' }}
+          <div
           >
             <h4
               css={css`
                 color: ${colors.primary};
                 text-align: right;
-                position: absolute;
                 bottom: 2rem;
                 right: 6rem;
               `}
             >
-              by {author}
+              {author}
             </h4>
-          </a>
+          </div>
         )}
       </hgroup>
     </div>

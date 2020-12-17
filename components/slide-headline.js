@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 import useColors from '../lib/useColors'
 
-const SlideHeadline = ({ children, sectionTitle }) => {
+const SlideHeadline = ({ children, sectionTitle, separateLine }) => {
   const colors = useColors()
 
   return (
@@ -13,7 +13,8 @@ const SlideHeadline = ({ children, sectionTitle }) => {
         font-weight: 300;
         color: ${colors.headline};
         margin-top: 0;
-        margin-bottom: 0.66em;
+        padding-bottom: 12px;
+        margin-bottom: 12px;
       `}
     >
       {sectionTitle && (
@@ -21,14 +22,23 @@ const SlideHeadline = ({ children, sectionTitle }) => {
           <span
             css={{
               color: colors.primary
+              // color: '#edff60'
             }}
           >
             {sectionTitle}
           </span>
-          {children && <span> - </span>}
+          {children && !separateLine && <span> - </span>}
         </>
       )}
+    {separateLine ? (
+      <div>
       {children}
+      </div>
+    ) :
+        (<span>
+          {children}
+        </span>)
+    }
     </h2>
   )
 }
